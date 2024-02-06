@@ -65,6 +65,7 @@
   transition: all 0.2s ease-in-out;
 }
 .biere img:hover {
+  cursor: pointer;
   transform: scale(1.04);
 }
 .biere img:active {
@@ -86,6 +87,7 @@
   margin: 10px 20px 10px 0px;
 }
 .shopbutton:hover {
+  cursor: pointer;
   background-color: #b9b9b994;
   transition: all 0.2s ease-in-out;
   transform: scale(0.99);
