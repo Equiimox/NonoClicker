@@ -1,3 +1,4 @@
+
 var audio = document.getElementById("diablo");
 audio.volume = 0.02;
 
@@ -17,6 +18,7 @@ const texte = [
   "Je bouffe pas mes gommes moi",
   "Un petit Symphony of the night?",
   "Diablo 4 est un CLASSIQUE",
+  "Tout le monde me fait pitie * finis sa despe *"
 ];
 
 var selecmotd = Math.floor(texte.length * Math.random());
@@ -208,6 +210,10 @@ window.onload = function () {
   loadsave();
   display.updatescore();
   display.updateshop();
+  var confirmation = confirm("On met de la zik?");
+  if (confirmation) {
+      var audio = new Audio("audio/diablo.mp3");
+      audio.play();}
 };
 function resetgame() {
   if (
