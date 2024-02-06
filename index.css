@@ -1,4 +1,11 @@
-
+/* background-image{ src:('images/nonoboules.gif');} */
+.gif{
+  float:left;
+  padding: 20px;
+}
+.rounded-gif {
+  border-radius: 10px; /* Vous pouvez ajuster la valeur selon vos préférences */
+}
 .dialogue {
   background-color: rgb(238, 238, 238, 0.6);
   padding: 5px;

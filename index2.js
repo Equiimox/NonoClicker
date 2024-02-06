@@ -13,7 +13,7 @@ const texte = [
   "en mode retro pegi 18",
   "On fait un Live horreur?",
   "Je vais l'enculer ton DarkSouls",
-  "Un petit peu de Merquez party quand même",
+  "Un petit peu de Merguez party quand même",
   "LE GRAND RENE",
   "Je bouffe pas mes gommes moi",
   "Un petit Symphony of the night?",
@@ -210,10 +210,10 @@ window.onload = function () {
   loadsave();
   display.updatescore();
   display.updateshop();
-  var confirmation = confirm("On met de la zik?");
-  if (confirmation) {
-      var audio = new Audio("audio/diablo.mp3");
-      audio.play();}
+  // var confirmation = confirm("On met de la zik?");
+  // if (confirmation) {
+  //     var audio = new Audio("audio/diablo.mp3");
+  //     audio.play();}
 };
 function resetgame() {
   if (

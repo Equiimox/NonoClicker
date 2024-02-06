@@ -15,9 +15,14 @@
   </head>
 
   <body>
+
     <div class="gauche unselectable">
+      
       <center>
         <div class="dialogue">
+          <div class="gif">
+            <img src="images/nonoboules.gif" height="200" class="rounded-gif">
+            </div>
           <p id="motd">J'ai pris le mauvais goulée</p>
           <p>
             Taux d'alcoolémie : <br />
@@ -42,7 +47,7 @@
             <p>Petite Ost sympa a mettre quand tu joues ;)</p>
             <!-- <button onclick="DIABLO()">OST BANGER</button> -->
             <!-- <iframe src="audio/diablo.mp3" allow="autoplay"></iframe> -->
-            <audio autoplay loop id="diablo">
+            <audio autoplay controls loop id="diablo">
               <source src="audio/diablo.mp3" type="audio/mp3" />
             </audio>
             <button onclick="resetgame();">Reset</button>
@@ -106,5 +111,6 @@
     </div>
 
     <script src="index2.js"></script>
+    
   </body>
 </html>

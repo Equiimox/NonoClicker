@@ -4,10 +4,10 @@ body {
     overflow: auto;
     background: linear-gradient(
       315deg,
-      rgb(43, 0, 40) 3%,
-      rgb(0, 20, 39) 38%,
-      rgb(0, 58, 54) 68%,
-      rgb(53, 1, 1) 98%
+      rgb(70, 22, 0) 3%,
+      rgb(35, 39, 0) 38%,
+      rgb(71, 0, 0) 68%,
+      rgb(53, 32, 1) 98%
     );
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
@@ -73,4 +73,3 @@ body {
       transform: translateX(1);
     }
   }
-  
