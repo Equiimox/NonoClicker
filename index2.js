@@ -3,9 +3,12 @@ function hideGif() {
   var gifElement = document.getElementById("gif");
   if (gifElement) {
       gifElement.style.display = "none";
+      
   } else {
       console.error("L'élément avec l'identifiant 'gif' n'a pas été trouvé.");
   }
+  var sound = new Audio("audio/branles.mp3"); // Remplacez "chemin/vers/votre/son.mp3" par le chemin de votre son
+    sound.play();
 }
 var audio = document.getElementById("diablo");
 audio.volume = 0.02;
