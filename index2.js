@@ -8,6 +8,15 @@ const texte = [
   "JE SUIS LA NUIT",
   "C'est pas bien de taper les femmes, moi je tue",
   "J'vais encore avoir mal au crane hein demain",
+  "en mode kiltran",
+  "en mode retro pegi 18",
+  "On fait un Live horreur?",
+  "Je vais l'enculer ton DarkSouls",
+  "Un petit peu de Merquez party quand même",
+  "LE GRAND RENE",
+  "Je bouffe pas mes gommes moi",
+  "Un petit Symphony of the night?",
+  "Diablo 4 est un CLASSIQUE",
 ];
 
 var selecmotd = Math.floor(texte.length * Math.random());
@@ -37,17 +46,30 @@ var game = {
   },
 };
 var building = {
-  name: ["Gobelet", "Pietra", "Champagne", "Champ rosé", "Jumeau Astral"],
+  name: ["Gobelet (1g/s)", "Pietra (10g/s)", "Champagne (20g/s)", "Champ rosé (100g/s)","Mousseux (200g/s)","Jumeau Astral (1kg/s)","Old Nick (2kg/s)","Vin Rouge (10kg/s)","Vin Blanc (20kg/s)","Whisky(Bouteille) (100kg/s)","Pack de Pietra (200kg/s)","Baril de Whisky (1t/s)","Alcool à brûler (2t/s)","E85 (10t/s)","Sp95-E10 (20t/s)","Sp95 (100t/s)","Sp98 (200t/s)","Diesel (1kt/s)"], //,"Old Nick","Vin Rouge","Vin Blanc","Whisky(Bouteille)"
   image: [
     "gobelet.jpg",
     "pietra33.jpg",
     "champfix.webp",
     "champrose.jpg",
+    "mousseux.png",
     "jumeau.png",
+    "oldnick.png",
+    "pif.png",
+    "blanc.png",
+    "label5.jpg",
+    "packpietra.png",
+    "barrilwhisky.png",
+    "bruler.png",
+    "e85.png",
+    "95e10.webp",
+    "SP95.png",
+    "SP98.webp",
+    "diesel.png"
   ],
-  count: [0, 0, 0, 0, 0],
-  income: [1, 10, 20, 100, 5000], //WIPWIPWIPWIIWPIWIPIWPIWIPW JUMEAU JE SU IS LA NUIT
-  cost: [15, 300, 1500, 10000, 100000],
+  count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0],
+  income: [1, 10, 20, 100, 200,1000,2000,10000,20000,100000,200000,1000000,2000000,10000000,20000000,100000000,200000000,1000000000], //WIPWIPWIPWIIWPIWIPIWPIWIPW JUMEAU JE SU IS LA NUIT
+  cost: [15, 300, 1500, 30000, 150000, 3e+6, 15e+6, 3e+7, 15e+7, 3e+8, 15e+8, 3e+9, 15e+9, 3e+10, 15e+10, 3e+11, 15e+11, 3e+12],
 
   purchase: function (index) {
     if (game.score >= this.cost[index]) {
@@ -66,20 +88,32 @@ var display = {
     // document.title = updatescore(game.score) + " - NONOCLICKER";
   },
 
-  
   updateshop: function () {
     document.getElementById("shopcontainer").innerHTML = "";
     for (z = 0; z < building.name.length; z++) {
       // console.log("nique", building.name.length);
       document.getElementById("shopcontainer").innerHTML +=
-        '<table class="shopbutton" onclick="building.purchase('+z+')"><tr><td id="image"><img src="images/' +building.image[z] +'" /></td><td id="nomprix"><p>'+ building.name[z] +'</p><p><span> '+updateunite(building.cost[z])+'</span> Alcool</p></td><td id="amount"><span>'+building.count[z] +'</span></td></tr></table>';
+        '<table class="shopbutton" onclick="building.purchase(' +
+        z +
+        ')"><tr><td id="image"><img src="images/' +
+        building.image[z] +
+        '" /></td><td id="nomprix"><p>' +
+        building.name[z] +
+        "</p><p><span> " +
+        updateunite(building.cost[z]) +
+        '</span> Alcool</p></td><td id="amount"><span>' +
+        building.count[z] +
+        "</span></td></tr></table>";
     }
   },
 };
 function updatesps() {
   var unite = "g/s";
-  var sps = game.getsps()
-  if (sps >= 1000000) {
+  var sps = game.getsps();
+  if (sps >= 1e+9){
+      unite = "kt/s"
+      sps /=1e+9;
+  } else if (sps >= 1000000) {
     unite = "t/s";
     sps /= 1000000;
   } else if (sps >= 100000) {
@@ -94,7 +128,10 @@ function updatesps() {
 function updateunite(prixtest) {
   var poids = "g";
   var nouveaupoids = prixtest;
-  if (nouveaupoids >= 1000000) {
+  if (nouveaupoids >= 1e+9) {
+    poids = "kt";
+    nouveaupoids = prixtest / 1e+9;}
+  else if (nouveaupoids >= 1000000) {
     poids = "t";
     nouveaupoids = prixtest / 1000000;
   } else if (nouveaupoids >= 100000) {
@@ -108,7 +145,10 @@ function updateunite(prixtest) {
 }
 function updatescore(nouveauscore) {
   var unite = "g/L";
-  if (nouveauscore >= 1000000) {
+  if (nouveauscore >= 1e+9) {
+    unite = "kt/L";
+    nouveauscore /= 1e+9;
+  } else if (nouveauscore >= 1000000) {
     unite = "t/L";
     nouveauscore /= 1000000;
   } else if (nouveauscore >= 100000) {
@@ -181,12 +221,11 @@ function resetgame() {
   }
 }
 
-setInterval(function() {
+setInterval(function () {
   game.score += game.getsps();
   game.totalscore += game.getsps();
   display.updatescore();
-},1000) //1 seconde
-
+}, 1000); //1 seconde
 
 setInterval(function () {
   savegame();
