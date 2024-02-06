@@ -1,7 +1,22 @@
-
+function hideGif() {
+  console.log("Cacher le GIF appelé");
+  var gifElement = document.getElementById("gif");
+  if (gifElement) {
+      gifElement.style.display = "none";
+  } else {
+      console.error("L'élément avec l'identifiant 'gif' n'a pas été trouvé.");
+  }
+}
 var audio = document.getElementById("diablo");
 audio.volume = 0.02;
 
+var hideButton = document.getElementById("hide-button");
+    if (hideButton) {
+        hideButton.addEventListener("click", hideGif);
+    } else {
+        console.error("Le bouton pour cacher le GIF n'a pas été trouvé.");
+    }
+;
 const texte = [
   "Vas y Pd *atchoum* *tousse* Ughh",
   "NIQUE TES MORTS HUGO",

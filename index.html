@@ -21,7 +21,7 @@
       <center>
         <div class="dialogue">
           <div class="gif">
-            <img src="images/nonoboules.gif" height="200" class="rounded-gif">
+            <img src="images/nonoboules.gif" id='gif' height="200" class="rounded-gif">
             </div>
           <p id="motd">J'ai pris le mauvais goulée</p>
           <p>
@@ -50,6 +50,7 @@
             <audio autoplay controls loop id="diablo">
               <source src="audio/diablo.mp3" type="audio/mp3" />
             </audio>
+            <button onclick="hideGif()">Cacher le GIF</button>
             <button onclick="resetgame();">Reset</button>
             <button onclick="savegame();">Sauvegarder</button>
           </div>
