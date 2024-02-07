@@ -1,10 +1,10 @@
-/* background-image{ src:('images/nonoboules.gif');} */
+
 .gif{
   float:left;
   padding: 20px;
 }
 .rounded-gif {
-  border-radius: 10px; /* Vous pouvez ajuster la valeur selon vos préférences */
+  border-radius: 10px; 
 }
 .dialogue {
   background-color: rgb(238, 238, 238, 0.6);
@@ -19,19 +19,8 @@
 .gauche {
   float: left;
   width: 75%;
-  /* position: relative;
-    left: 25px;
-    top: 25px ; */
-  /* background-color: darkgreen; */
+
 }
-/* .main {
-    float: left;
-    left: 20%;
-    position: relative;
-    left: 20%;
-    top: 40px;
-    background-color: chocolate;
-  } */
 
 .droite::-webkit-scrollbar {
   display: none;
@@ -52,21 +41,9 @@
     transparent 100%
   );
   padding-right: -10px;
-  /* position: relative;
-    top: 25px;
-    right:-200px
-    background-color: brown; */
+
 }
-/* .music {
-    background-color: rgb(238, 238, 238, 0.6);
-    padding: 10px;
-    border-radius: 10px;
-    float: ;
-    position: relative;
-    top: 600px;
-    left: -500px;
-    background-color: aquamarine;
-  } */
+
 .biere img {
   position: relative;
   transition: all 0.2s ease-in-out;
@@ -87,7 +64,8 @@
     height: 30vh;
   } */
 .shopbutton {
-  background-color: #b5b5b5;
+  border: 3px solid #6d6d6d;
+  background-color: #ada185;
   transition: all 0.2s ease-in-out;
   border-radius: 10px;
   width: 100%;
@@ -137,4 +115,10 @@
   padding: 5px;
   border-radius: 10px;
   width: 23%;
+}
+#upgradecontainer img{
+height: 64px ;
+width: 64px ;
+border-radius: 10px;
+border: 3px solid #6d6d6d;
 }
