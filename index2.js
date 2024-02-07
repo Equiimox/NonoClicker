@@ -259,6 +259,7 @@ function savegame() {
     buildingcount: building.count,
     buildingincome: building.income,
     buildingcost: building.cost,
+    upgradepurchased: upgrade.purchased
   };
   localStorage.setItem("gamesave", JSON.stringify(gamesave));
 }
@@ -285,6 +286,11 @@ function loadsave() {
     if (typeof savedgame.buildingcost !== "undefined") {
       for (i = 0; i < savedgame.buildingcost.length; i++) {
         building.cost[i] = savedgame.buildingcost[i];
+      }
+    }
+    if (typeof savedgame.upgradepurchased !== "undefined") {
+      for (i = 0; i < savedgame.upgradepurchased.length; i++) {
+        upgrade.purchased[i] = savedgame.upgradepurchased[i];
       }
     }
   }
