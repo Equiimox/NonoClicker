@@ -1,29 +1,46 @@
-
-.gif{
-  float:left;
-  padding: 20px;
-}
-.rounded-gif {
-  border-radius: 10px; 
-}
 .dialogue {
   background-color: rgb(238, 238, 238, 0.6);
   padding: 5px;
   border-radius: 10px;
   font-size: 24px;
   font-weight: bold;
-  width: 50%;
+  width: 60%;
   border: #595959;
   margin-top: 10px;
+}
+.gif {
+  position: absolute;
+  float: left;
+  padding: 20px;
+}
+.rounded-gif {
+  border-radius: 10px;
 }
 .gauche {
   float: left;
   width: 75%;
-
 }
-
+.droitebas::-webkit-scrollbar {
+  display: none;
+}
 .droite::-webkit-scrollbar {
   display: none;
+}
+.droitebas {
+  background-color: rgba(173, 173, 173, 0.212);
+  padding: 5px;
+  border-radius: 10px;
+  max-height: 30vh;
+  overflow-y: scroll;
+  float: right;
+  width: 23%;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10px,
+    black calc(100% - 10px),
+    transparent 100%
+  );
 }
 .droite {
   background-color: rgba(173, 173, 173, 0.212);
@@ -40,11 +57,31 @@
     black calc(100% - 10px),
     transparent 100%
   );
-  padding-right: -10px;
-
 }
-
-.biere img {
+#clicker {
+  background-image: url(images/pietra33.png);
+  background-size: contain;
+  position: relative;
+  transition: all 0.1s ease-in-out;
+  width: 190px;
+  height: 642.93px;
+}
+#clicker:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+#clicker:active {
+  transform: scale(0.93);
+}
+#clicker > .number {
+  z-index: 99;
+  font-size: 36px;
+  color: black;
+  position: absolute;
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+}
+/* <img src="images/pietra33.png" width="190px" id="clicker" /> */
+/* .biere img {
   position: relative;
   transition: all 0.2s ease-in-out;
 }
@@ -54,6 +91,20 @@
 }
 .biere img:active {
   transform: scale(0.94);
+} */
+.textheader > p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  margin: 0;
+  padding: 8px;
+}
+.textheader {
+  position: static;
+  margin-bottom: auto;
+  border-radius: 0%;
+  width: 100%;
+  background-color: burlywood;
 }
 /* html,
   body {
@@ -116,9 +167,16 @@
   border-radius: 10px;
   width: 23%;
 }
-#upgradecontainer img{
-height: 64px ;
-width: 64px ;
-border-radius: 10px;
-border: 3px solid #6d6d6d;
+#upgradecontainer img {
+  margin: 5px;
+  height: 64px;
+  width: 64px;
+  border-radius: 10px;
+
+  border: 3px solid #6d6d6d;
+}
+#upgradecontainer img:hover {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.99);
 }

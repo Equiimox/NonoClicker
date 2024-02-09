@@ -1,22 +1,55 @@
-function hideGif() {
+function toggleGif() {
+  console.log("TAMER");
   var gifElement = document.getElementById("gif");
-  if (gifElement) {
-      gifElement.style.display = "none";
-      
-  } else {
-      console.error("L'élément avec l'identifiant 'gif' n'a pas été trouvé.");
-  }
-  var sound = new Audio("audio/branles.mp3"); // Remplacez "chemin/vers/votre/son.mp3" par le chemin de votre son
-    sound.play();
-}
-var audio = document.getElementById("diablo");
-audio.volume = 0.02;
+  var hideButton = document.getElementById("hide-button");
 
-var hideButton = document.getElementById("hide-button");
-    if (hideButton) {
-        hideButton.addEventListener("click", hideGif);
-    } ;
-;
+  if (gifElement.style.display === "none") {
+    var sound = new Audio("audio/peurpd.mp3");
+    sound.play();
+    gifElement.style.display = "block";
+    hideButton.innerText = "Cacher le GIF";
+  } else {
+    var sound = new Audio("audio/couilles.mp3");
+    sound.play();
+    gifElement.style.display = "none";
+    hideButton.innerText = "Afficher le GIF";
+  }
+}
+// var gifVisible = true;
+
+// function toggleGif() {
+//   var gifElement = document.getElementById("gif");
+//   var hideButton = document.getElementById("hide-button");
+
+//   if (gifVisible) {
+//     var sound = new Audio("audio/peurpd.mp3");
+//     sound.play();
+//     gifElement.style.display = "none";
+//     hideButton.innerText = "Afficher le GIF";
+//   } else {
+//     var sound = new Audio("audio/couilles.mp3");
+//     sound.play();
+//     gifElement.style.display = "inline-block";
+//     hideButton.innerText = "Cacher le GIF";
+//   }
+
+//   gifVisible = !gifVisible;
+// }
+// function hideGif() {
+//   var gifElement = document.getElementById("gif");
+//   if (gifElement) {
+//     gifElement.style.display = "none";
+//   } else {
+//     console.error("L'élément avec l'identifiant 'gif' n'a pas été trouvé.");
+//   }
+// }
+var diablo = document.getElementById("diablo");
+diablo.volume = 0.02;
+
+// var hideButton = document.getElementById("hide-button");
+// if (hideButton) {
+//   hideButton.addEventListener("click", toggleGif);
+// }
 const texte = [
   "Vas y Pd *atchoum* *tousse* Ughh",
   "NIQUE TES MORTS HUGO",
@@ -33,7 +66,7 @@ const texte = [
   "Je bouffe pas mes gommes moi",
   "Un petit Symphony of the night?",
   "Diablo 4 est un CLASSIQUE",
-  "Tout le monde me fait pitie * finis sa despe *"
+  "Tout le monde me fait pitie * finis sa despe *",
 ];
 
 var selecmotd = Math.floor(texte.length * Math.random());
@@ -50,16 +83,15 @@ var game = {
   prestigepoints: 0,
   prestigeinprogress: false,
   version: 0.1,
-  prestigetalents:{
+  prestigetalents: {
     upgradeiron: false,
     upgradegold: false,
     upgradeplatinum: false,
     upgradeemerald: false,
     upgradediamond: false,
     upgrademult: 0,
-
-    },
-      click : function(){
+  },
+  click: function () {
     this.totalclicks++;
   },
 
@@ -78,7 +110,27 @@ var game = {
   },
 };
 var building = {
-  name: ["Gobelet (1g/s)", "Pietra (10g/s)", "Champagne (20g/s)", "Champ rosé (100g/s)","Mousseux (200g/s)","Stong Zero (1kg/s)","Old Nick (2kg/s)","Vin Rouge (10kg/s)","Vin Blanc (20kg/s)","Whisky(Bouteille) (100kg/s)","Pack de Pietra (200kg/s)","Baril de Whisky (1t/s)","Alcool à brûler (2t/s)","E85 (10t/s)","Sp95-E10 (20t/s)","Sp95 (100t/s)","Sp98 (200t/s)","Diesel (1kt/s)","Kérosène (2kt/s)"], //,"Old Nick","Vin Rouge","Vin Blanc","Whisky(Bouteille)"
+  name: [
+    "Gobelet",
+    "Pietra",
+    "Champagne",
+    "Champ rosé",
+    "Mousseux",
+    "Stong Zero",
+    "Old Nick",
+    "Vin Rouge",
+    "Vin Blanc",
+    "Whisky(Bouteille)",
+    "Pack de Pietra",
+    "Baril de Whisky",
+    "Alcool à brûler",
+    "E85",
+    "Sp95-E10",
+    "Sp95",
+    "Sp98",
+    "Diesel",
+    "Kérosène",
+  ],
   image: [
     "gobelet.png",
     "pietra.png",
@@ -98,17 +150,22 @@ var building = {
     "SP95.png",
     "SP98.webp",
     "diesel.png",
-    "kerosene.png"
+    "kerosene.png",
   ],
-  
   count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  income: [1, 10, 20, 100, 200,1000,2000,10000,20000,100000,200000,1000000,2000000,10000000,20000000,100000000,200000000,1000000000,2e+9], //WIPWIPWIPWIIWPIWIPIWPIWIPW JUMEAU JE SU IS LA NUIT
-  cost: [15, 300, 1500, 30000, 150000, 3e+6, 15e+6, 3e+7, 15e+7, 3e+8, 15e+8, 3e+9, 15e+9, 3e+10, 15e+10, 3e+11, 15e+11, 3e+12, 15e+12],
-  // building.name[0] = "Gobelet (" + updatesps(building.income[0]) + ")",
+  income: [
+    1, 10, 20, 100, 200, 1000, 2000, 10000, 20000, 100000, 200000, 1000000,
+    2000000, 10000000, 20000000, 100000000, 200000000, 1000000000, 2e9,
+  ],
+  cost: [
+    15, 300, 1500, 30000, 150000, 3e6, 15e6, 3e7, 15e7, 3e8, 15e8, 3e9, 15e9,
+    3e10, 15e10, 3e11, 15e11, 3e12, 15e12,
+  ],
+
   purchase: function (index) {
     if (game.score >= this.cost[index]) {
       game.score -= this.cost[index];
-      this.count[index]++; // ++ = Ca plus 1
+      this.count[index]++;
       this.cost[index] = Math.ceil(this.cost[index] * 1.15);
       display.updatescore();
       display.updateshop();
@@ -116,10 +173,43 @@ var building = {
     }
   },
 };
+
+// L'objet `upgrade` et les autres fonctions et variables continuent ici
+
 var upgrade = {
-    name: ["Gobelet en pierre","Curseur en pierre","Pietra en pierre","Champagne en pierre","Champ rosé en pierre","Mousseux en pierre","Strong en pierre","Old Nick en pierre","Vin Rouge en pierre","Vin Blanc en pierre","Label 5 en pierre","Pack de Pietra en pierre",],
-    description: ["Les gobelets sont 2 fois plus efficace","Les clics sont 2 fois plus efficace","Les Pietra sont 2 fois plus efficace","Les Champagnes sont 2 fois plus efficace","Les Champ rosés sont 2 fois plus efficace","Les Mousseux sont 2 fois plus efficace","Les Strongs sont 2 fois plus efficace","Les Old Nick sont 2 fois plus efficace","Les Vins Rouges sont 2 fois plus efficace","Les Vins Blancs sont 2 fois plus efficace","Les Label 5 sont 2 fois plus efficace","Les Packs de Pietra sont 2 fois plus efficace",],
-    image: ["gobelet_p.jpg","cursor_p.webp","pietra_p.png","champfix_p.webp",
+  name: [
+    "Gobelet en pierre",
+    "Curseur en pierre",
+    "Pietra en pierre",
+    "Champagne en pierre",
+    "Champ rosé en pierre",
+    "Mousseux en pierre",
+    "Strong en pierre",
+    "Old Nick en pierre",
+    "Vin Rouge en pierre",
+    "Vin Blanc en pierre",
+    "Label 5 en pierre",
+    "Pack de Pietra en pierre",
+  ],
+  description: [
+    "Les gobelets sont 2 fois plus efficace",
+    "Les clics sont 2 fois plus efficace",
+    "Les Pietra sont 2 fois plus efficace",
+    "Les Champagnes sont 2 fois plus efficace",
+    "Les Champ rosés sont 2 fois plus efficace",
+    "Les Mousseux sont 2 fois plus efficace",
+    "Les Strongs sont 2 fois plus efficace",
+    "Les Old Nick sont 2 fois plus efficace",
+    "Les Vins Rouges sont 2 fois plus efficace",
+    "Les Vins Blancs sont 2 fois plus efficace",
+    "Les Label 5 sont 2 fois plus efficace",
+    "Les Packs de Pietra sont 2 fois plus efficace",
+  ],
+  image: [
+    "gobelet_p.jpg",
+    "cursor_p.webp",
+    "pietra_p.png",
+    "champfix_p.webp",
     "champrose_p.png",
     "mousseux_p.png",
     "strong_p.webp",
@@ -127,36 +217,68 @@ var upgrade = {
     "pif_p.png",
     "blanc_p.png",
     "label5_p.jpg",
-    "packpietra_p.png",],
-    type: ["building","click","building","building","building","building","building","building","building","building","building","building"],
-    cost: [300,10000,1500,3e+4,15e+4,3e+5,15e+5,3e+6,15e+6,3e+7,15e+7,3e+8],
-    buildingindex: [0,-1,1,2,3,4,5,6,7,8,9,10],
-    requirement:[10,300,10,10,10,10,10,10,10,10,10,10],
-    bonus:[2,2,2,2,2,2,2,2,2,2,2,2],
-    purchased: [false,false,false,false,false,false,false,false,false,false,false,false],
+    "packpietra_p.png",
+  ],
+  type: [
+    "building",
+    "click",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+    "building",
+  ],
+  cost: [300, 10000, 1500, 3e4, 15e4, 3e5, 15e5, 3e6, 15e6, 3e7, 15e7, 3e8],
+  buildingindex: [0, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  requirement: [10, 300, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+  bonus: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  purchased: [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
 
-    purchase: function (index){
-      console.log("test");
-      if(!this.purchased[index] && game.score >= this.cost[index]) {
-        if (this.type[index]=="building" && building.count[this.buildingindex[index]] >= this.requirement[index]){
-          game.score -=this.cost[index];
-          building.income[this.buildingindex[index]] *= this.bonus[index];
-          this.purchased[index] =true;
+  purchase: function (index) {
+    if (!this.purchased[index] && game.score >= this.cost[index]) {
+      if (
+        this.type[index] == "building" &&
+        building.count[this.buildingindex[index]] >= this.requirement[index]
+      ) {
+        game.score -= this.cost[index];
+        building.income[this.buildingindex[index]] *= this.bonus[index];
+        this.purchased[index] = true;
 
-          display.updateupgrades();
-          display.updatescore();
-        }else if(this.type[index]=="click" && game.totalclicks >= this.requirement[index]){
-          game.score -=this.cost[index];
-          game.clickvalue *= this.bonus[index];
-          this.purchased[index] =true;
+        display.updateupgrades();
+        display.updatescore();
+        display.updateshopsps();
+      } else if (
+        this.type[index] == "click" &&
+        game.totalclicks >= this.requirement[index]
+      ) {
+        game.score -= this.cost[index];
+        game.clickvalue *= this.bonus[index];
+        this.purchased[index] = true;
 
-          display.updateupgrades();
-          display.updatescore();
-        }
+        display.updateupgrades();
+        display.updatescore();
+        display.updateshopsps();
       }
     }
-    
-    
+  },
 };
 var display = {
   updatescore: function () {
@@ -174,7 +296,9 @@ var display = {
         z +
         ')"><tr><td id="image"><img src="images/' +
         building.image[z] +
-        '" /></td><td id="nomprix"><p>' +
+        '" /></td><td id="nomprix"><p id="bname-' +
+        z +
+        '">' +
         building.name[z] +
         "</p><p><span> " +
         updateunite(building.cost[z]) +
@@ -182,26 +306,78 @@ var display = {
         building.count[z] +
         "</span></td></tr></table>";
     }
+    display.updateshopsps();
   },
-  updateupgrades: function (){
-    document.getElementById("upgradecontainer").innerHTML ="";
-      for(i = 0; i < upgrade.name.length; i++) {
-        if(!upgrade.purchased[i]){
-          if(upgrade.type[i] == "building" && building.count[upgrade.buildingindex[i]] >= upgrade.requirement[i]) {
-            document.getElementById("upgradecontainer").innerHTML += '<img src="images/'+upgrade.image[i]+'" title="'+upgrade.name[i]+' &#10; '+upgrade.description[i]+' &#10; ('+updateunite(upgrade.cost[i])+')" onclick="upgrade.purchase('+i+')">'; 
-          } else if(upgrade.type[i] == "click" && game.totalclicks >= upgrade.requirement[i]) {
-            document.getElementById("upgradecontainer").innerHTML += '<img src="images/'+upgrade.image[i]+'" title="'+upgrade.name[i]+' &#10; '+upgrade.description[i]+' &#10; ('+updateunite(upgrade.cost[i])+')" onclick="upgrade.purchase('+i+')">';
-          }
+  updateupgrades: function () {
+    document.getElementById("upgradecontainer").innerHTML = "";
+    for (i = 0; i < upgrade.name.length; i++) {
+      if (!upgrade.purchased[i]) {
+        if (
+          upgrade.type[i] == "building" &&
+          building.count[upgrade.buildingindex[i]] >= upgrade.requirement[i]
+        ) {
+          document.getElementById("upgradecontainer").innerHTML +=
+            '<img src="images/' +
+            upgrade.image[i] +
+            '" title="' +
+            upgrade.name[i] +
+            " &#10; " +
+            upgrade.description[i] +
+            " &#10; (" +
+            updateunite(upgrade.cost[i]) +
+            ')" onclick="upgrade.purchase(' +
+            i +
+            ')">';
+        } else if (
+          upgrade.type[i] == "click" &&
+          game.totalclicks >= upgrade.requirement[i]
+        ) {
+          document.getElementById("upgradecontainer").innerHTML +=
+            '<img src="images/' +
+            upgrade.image[i] +
+            '" title="' +
+            upgrade.name[i] +
+            " &#10; " +
+            upgrade.description[i] +
+            " &#10; (" +
+            updateunite(upgrade.cost[i]) +
+            ')" onclick="upgrade.purchase(' +
+            i +
+            ')">';
         }
       }
-  }
+    }
+  },
+  updateshopsps: function () {
+    for (i = 0; i < building.name.length; i++) {
+      document.getElementById("bname-" + i + "").innerHTML =
+        building.name[i] + " (" + updatespsshop(building.income[i]) + ")";
+    }
+  },
 };
+function updatespsshop(price) {
+  var unite = "g/s";
+  if (price >= 1e9) {
+    unite = "kt/s";
+    price /= 1e9;
+  } else if (price >= 1000000) {
+    unite = "t/s";
+    price /= 1000000;
+  } else if (price >= 100000) {
+    unite = "q/s";
+    price /= 100000;
+  } else if (price >= 1000) {
+    unite = "kg/s";
+    price /= 1000;
+  }
+  return `${price} ${unite}`;
+}
 function updatesps() {
   var unite = "g/s";
   var sps = game.getsps();
-  if (sps >= 1e+9){
-      unite = "kt/s"
-      sps /=1e+9;
+  if (sps >= 1e9) {
+    unite = "kt/s";
+    sps /= 1e9;
   } else if (sps >= 1000000) {
     unite = "t/s";
     sps /= 1000000;
@@ -217,10 +393,10 @@ function updatesps() {
 function updateunite(prixtest) {
   var poids = "g";
   var nouveaupoids = prixtest;
-  if (nouveaupoids >= 1e+9) {
+  if (nouveaupoids >= 1e9) {
     poids = "kt";
-    nouveaupoids = prixtest / 1e+9;}
-  else if (nouveaupoids >= 1000000) {
+    nouveaupoids = prixtest / 1e9;
+  } else if (nouveaupoids >= 1000000) {
     poids = "t";
     nouveaupoids = prixtest / 1000000;
   } else if (nouveaupoids >= 100000) {
@@ -234,9 +410,9 @@ function updateunite(prixtest) {
 }
 function updatescore(nouveauscore) {
   var unite = "g/L";
-  if (nouveauscore >= 1e+9) {
+  if (nouveauscore >= 1e9) {
     unite = "kt/L";
-    nouveauscore /= 1e+9;
+    nouveauscore /= 1e9;
   } else if (nouveauscore >= 1000000) {
     unite = "t/L";
     nouveauscore /= 1000000;
@@ -259,7 +435,7 @@ function savegame() {
     buildingcount: building.count,
     buildingincome: building.income,
     buildingcost: building.cost,
-    upgradepurchased: upgrade.purchased
+    upgradepurchased: upgrade.purchased,
   };
   localStorage.setItem("gamesave", JSON.stringify(gamesave));
 }
@@ -289,8 +465,14 @@ function loadsave() {
       }
     }
     if (typeof savedgame.upgradepurchased !== "undefined") {
-      for (i = 0; i < savedgame.upgradepurchased.length; i++) {
+      for (let i = 0; i < savedgame.upgradepurchased.length; i++) {
         upgrade.purchased[i] = savedgame.upgradepurchased[i];
+        // Appliquer les effets des améliorations (upgrades) achetées
+        if (upgrade.purchased[i]) {
+          if (upgrade.type[i] === "click") {
+            game.clickvalue *= upgrade.bonus[i];
+          }
+        }
       }
     }
   }
@@ -299,46 +481,103 @@ function loadsave() {
   //   if(typeof savedgame.buildingcost!== "undefined") game.buildingcost= savedgame.buildingcost;
   // }
 }
-document.getElementById("clicker").addEventListener("click",function(){
-  game.totalclicks++
-  game.addtoscore(game.clickvalue)
-},false)
+function fadeout(element, duration, finalopacity, callback) {
+  let opacity = 1;
+
+  let elementfadinginterval = window.setInterval(function () {
+    opacity -= 50 / duration;
+
+    if (opacity <= finalopacity) {
+      clearInterval(elementfadinginterval);
+      callback();
+    }
+
+    element.style.opacity = opacity;
+  }, 50);
+}
+
+function numberoc(event) {
+  let clicker = document.getElementById("clicker");
+
+  let clickeroffset = clicker.getBoundingClientRect();
+  let position = {
+    x: event.pageX - clickeroffset.left,
+    y: event.pageY - clickeroffset.top,
+  };
+
+  let element = document.createElement("div");
+  element.textContent = "+" + game.clickvalue;
+  element.classList.add("number", "unselectable");
+  element.style.left = position.x + "px";
+  element.style.top = position.y + "px";
+
+  clicker.appendChild(element);
+
+  let movementinterval = window.setInterval(function () {
+    if (typeof element == "undefined" && element == null)
+      clearInterval(movementinterval);
+    position.y--;
+    element.style.top = position.y + "px";
+  }, 10);
+
+  fadeout(element, 3000, 0.5, function () {
+    element.remove();
+  });
+}
 
 window.onload = function () {
+  document.getElementById("hide-button").addEventListener("click", toggleGif);
   loadsave();
   display.updatescore();
   display.updateshop();
-  display.updateupgrades(); // Utilisez la méthode display.updateupgrades() ici
+  display.updateupgrades();
+  display.updateshopsps(); // Utilisez la méthode display.updateupgrades() ici
 };
-  // var confirmation = confirm("On met de la zik?");
-  // if (confirmation) {
-  //     var audio = new Audio("audio/diablo.mp3");
-  //     audio.play();}
+// var confirmation = confirm("On met de la zik?");
+// if (confirmation) {
+//     var audio = new Audio("audio/diablo.mp3");
+//     audio.play();}
 function resetgame() {
   var sound = new Audio("audio/dislike.mp3"); // Remplacez "chemin/vers/votre/son.mp3" par le chemin de votre son
-  sound.volume = 0.15
+  sound.volume = 0.15;
   sound.play();
-  window.setTimeout(()=>
-  {if (
-    confirm(
-      "What? Fuck you, fuck you, fuck you, fuck you! Dislike man? Fuck you! Fuck you you fuck you!"
-    )
-  ) {
-    var gamesave = {};
-    localStorage.setItem("gamesave", JSON.stringify(gamesave));
-    location.reload();
-  }},10);
+  window.setTimeout(() => {
+    if (
+      confirm(
+        "What? Fuck you, fuck you, fuck you, fuck you! Dislike man? Fuck you! Fuck you you fuck you!"
+      )
+    ) {
+      var gamesave = {};
+      localStorage.setItem("gamesave", JSON.stringify(gamesave));
+      location.reload();
+    }
+  }, 10);
+}
+function tousse() {
+  var sound = new Audio("audio/vasy.mp3");
+  sound.play();
+  sound.volume = 0.05;
 }
 
+document.getElementById("clicker").addEventListener(
+  "click",
+  function (event) {
+    game.totalclicks++;
+    game.addtoscore(game.clickvalue);
+
+    numberoc(event);
+  },
+  false
+);
 setInterval(function () {
   game.score += game.getsps();
   game.totalscore += game.getsps();
   display.updatescore();
 }, 1000); //1 seconde
 
-setInterval(function() {
-display.updatescore();
-display.updateupgrades();
+setInterval(function () {
+  display.updatescore();
+  display.updateupgrades();
 }, 1000);
 
 setInterval(function () {
