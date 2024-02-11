@@ -481,6 +481,9 @@ function loadsave() {
   //   if(typeof savedgame.buildingcost!== "undefined") game.buildingcost= savedgame.buildingcost;
   // }
 }
+function rdnum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
 function fadeout(element, duration, finalopacity, callback) {
   let opacity = 1;
 
@@ -501,7 +504,7 @@ function numberoc(event) {
 
   let clickeroffset = clicker.getBoundingClientRect();
   let position = {
-    x: event.pageX - clickeroffset.left,
+    x: event.pageX - clickeroffset.left + rdnum(-7, 7),
     y: event.pageY - clickeroffset.top,
   };
 
